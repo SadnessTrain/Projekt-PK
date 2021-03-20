@@ -1,5 +1,4 @@
 # Projekt-PK
-Projekt na PK, II(A)
 
 Nazwa projektu: [tu wpisz nazwę]
 
