@@ -2,7 +2,7 @@
 
 Nazwa projektu: [tu wpisz nazwę]
 
-Członkowie (max 3 osoby): Szymon Jurczak l0711, Agnieszka Lech l0597
+Członkowie: Szymon Jurczak l0711, Agnieszka Lech l0597, Jan Wikariak l0605
 
 Technologia: Java, Eclipse, Notepad++(?), IntelliJ
 
