@@ -1,90 +1,205 @@
-package pk_projekt;
-
-import java.awt.event.*;
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+public class Kalkulator {
+    //notatnik stuff
+    private JPanel notatnik;
+    private JTextArea t;
+    private JButton breset;
 
-public class Kalkulator extends JFrame implements ActionListener {
-		
-	private static final long serialVersionUID = -350197252473129350L;			//trzeba było dodać, nie rozumiem czemu, nie znajde odpowiedzi którą bym zrozumiał
-	static JFrame f;
-	static JTextField t;
-	String l0, l1, l2;							// liczby do wpisania
-	
-	Kalkulator()								//konstruktor
-    {
-        l0 = l1 = l2 = "";
+    //kalkulator stuff
+    private double total;
+    private double total2;
+    private char znak;
+
+    private JPanel Kalkulator;
+    private JTextField pole;
+    private JButton b1;
+    private JButton b2;
+    private JButton b3;
+    private JButton b4;
+    private JButton b5;
+    private JButton b6;
+    private JButton b7;
+    private JButton b8;
+    private JButton b9;
+    private JButton b0;
+    private JButton bplus;
+    private JButton bminus;
+    private JButton brazy;
+    private JButton bpodzielic;
+    private JButton browna;
+    private JButton bkropka;
+    private JButton bprocent;
+    private JButton bclear;
+    private JPanel operatory;
+
+    private void getOperator(String btxt){
+        znak = btxt.charAt(0);
+        total = total + Double.parseDouble(pole.getText( ));
+        pole.setText("");
     }
-	
-		public static void main(String[] args){
-	    	
-			Kalkulator c = new Kalkulator();
-			
-		}
-			
-		public void actionPerformed(ActionEvent e) {
-			
-			String s = e.getActionCommand();												// jakoś słucha przycisków i robi z tego string(?)
-			
-			if ((s.charAt(0) >= '0' && s.charAt(0) <= '9') || s.charAt(0) == '.') {			// jeżeli wybrany przycisk to liczba 1-9/'.'
-	            if (!l1.equals(""))															// to ją wpisuje albo dodaje po kropce
-	                l2 = l2 + s;															// linijka 115 TO GÓWNO KTÓRE WSZYSTKO PSUJE
-	            else																		// same nullPointery jak nie klikne najpierw clear
-	                l0 = l0 + s;															// dobra naprawiłem, jednak moja wina. nie lubie kiedy to jest moja wina
-	            t.setText(l0 + l1 + l2);													// setText wpisuje wynik w pole tekstowe, dlatego t.[..]
-			}
-			else if (s.charAt(0) == 'C') {													// usuwa
-	            l0 = l1 = l2 = "";															// DLACZEGO jak najpierw klikne clear
-	            t.setText(l0 + l1 + l2);													// to wszystko zaczyna działać
-	        }
-			else if (s.charAt(0) == '=') {
-				  
-	            double x;																	// tymczasowa zmienna
-	  
-	            if (l1.equals("+"))															// wybiera jak obliczyć i to robi
-	                x = (Double.parseDouble(l0) + Double.parseDouble(l2));					
-	            else if (l1.equals("-"))
-	                x = (Double.parseDouble(l0) - Double.parseDouble(l2));
-	            else if (l1.equals("/"))
-	                x = (Double.parseDouble(l0) / Double.parseDouble(l2));
-	            else
-	                x = (Double.parseDouble(l0) * Double.parseDouble(l2));
-	  
-	            t.setText(l0 + l1 + l2 + "=" + x);											// setText wpisuje wynik w pole tekstowe
 
-	  
-	            l0 = Double.toString(x);													// konwert w string żeby można było wpisać w pole na tekst(?)
-	  
-	            l1 = l2 = "";																// resetuje zmienne
-	            
-	        }
-			else {
+    public Kalkulator() {
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String b1txt = pole.getText() + b1.getText();
+                pole.setText(b1txt);
+            }
+        });
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String b2txt = pole.getText() + b2.getText();
+                pole.setText(b2txt);
+            }
+        });
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String b3txt = pole.getText() + b3.getText();
+                pole.setText(b3txt);
+            }
+        });
+        b4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String b4txt = pole.getText() + b4.getText();
+                pole.setText(b4txt);
+            }
+        });
+        b5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String b5txt = pole.getText() + b5.getText();
+                pole.setText(b5txt);
+            }
+        });
+        b6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String b6txt = pole.getText() + b6.getText();
+                pole.setText(b6txt);
+            }
+        });
+        b7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String b7txt = pole.getText() + b7.getText();
+                pole.setText(b7txt);
+            }
+        });
+        b8.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String b8txt = pole.getText() + b8.getText();
+                pole.setText(b8txt);
+            }
+        });
+        b9.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String b9txt = pole.getText() + b9.getText();
+                pole.setText(b9txt);
+            }
+        });
+        b0.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String b0txt = pole.getText() + b0.getText();
+                pole.setText(b0txt);
+            }
+        });
+        bkropka.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String bkropkatxt = pole.getText() + bkropka.getText();
+                pole.setText(bkropkatxt);
+            }
+        });
+        bplus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String bplustxt = bplus.getText();
+                getOperator(bplustxt);
+            }
+        });
+        bminus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String bminustxt = bminus.getText();
+                getOperator(bminustxt);
+            }
+        });
+        brazy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String brazytxt = brazy.getText();
+                getOperator(brazytxt);
+            }
+        });
+        bpodzielic.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String bpodzielictxt = bpodzielic.getText();
+                getOperator(bpodzielictxt);
+            }
+        });
+        bprocent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String bprocenttxt = bprocent.getText();
+                getOperator(bprocenttxt);
+            }
+        });
+        browna.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (znak) {
+                    case '+':
+                        total2 = total + Double.parseDouble(pole.getText());
+                        break;
+                    case '-':
+                        total2 = total - Double.parseDouble(pole.getText());
+                        break;
+                    case 'x':
+                        total2 = total * Double.parseDouble(pole.getText());
+                        break;
+                    case '÷':
+                        total2 = total / Double.parseDouble(pole.getText());
+                        break;
+                    case '%':
+                        total2 = (total * Double.parseDouble(pole.getText()))/100;
+                        break;
+                }
+                pole.setText( Double.toString(total2) );
+                total = 0;
 
-	            if (l1.equals("") || l2.equals(""))											// nie, nie wiem dlaczego to znowu tu jest
-	                l1 = s;																	// cały blok kodu copy-pastowany ale działa
+            }
+        });
+        bclear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                total2 = 0;
+                pole.setText("");
+            }
+        });
+        breset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                t.setText("");
+            }
+        });
+    }
 
-	            else {
-	                
-	            	double x;																// reject calculator, return to ancient egypt
-	  
-	                if (l1.equals("+"))
-	                    x = (Double.parseDouble(l0) + Double.parseDouble(l2));
-	                else if (l1.equals("-"))
-	                    x = (Double.parseDouble(l0) - Double.parseDouble(l2));
-	                else if (l1.equals("/"))
-	                    x = (Double.parseDouble(l0) / Double.parseDouble(l2));
-	                else
-	                    x = (Double.parseDouble(l0) * Double.parseDouble(l2));
-	  
-	                l0 = Double.toString(x);
-	  
-	                l1 = s;
-	  
-	                l2 = "";
-	                
-	            }
-			
-			}
-		}
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Calculator++");
+        frame.setContentPane(new Kalkulator().Kalkulator);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
 }
