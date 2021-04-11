@@ -35,4 +35,4 @@ class text extends JFrame implements ActionListener {
             t.setText("  ");
         }
     }
-}
+} 
